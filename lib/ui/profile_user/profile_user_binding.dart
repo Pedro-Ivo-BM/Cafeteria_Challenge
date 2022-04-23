@@ -1,8 +1,6 @@
 import 'package:get/get.dart';
 
-class ProfileBinding implements Bindings {
+class ProfileUserBinding implements Bindings {
   @override
-  void dependencies() {
-    
-  }
+  void dependencies() {}
 }

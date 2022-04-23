@@ -5,20 +5,20 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class RootController extends GetxController {
-  final _selectedIndex = 0.obs;
-  final _bodyContent = <Widget>[].obs;
-  get selectedIndex => _selectedIndex.value;
-  set selectedIndex(index) => _selectedIndex.value = index;
+  final  RxInt _selectedPagePosition = 0.obs;
+  get selectedPagePosition => _selectedPagePosition.value;
+  set selectedPagePosition(pagePosition) => _selectedPagePosition.value = pagePosition;
 
-  get bodyContent => _bodyContent;
-  set bodyContent(value) => _bodyContent.value = value;
+  final  RxList<Widget> _pages = <Widget>[].obs;
+  get pages => _pages;
+  set pages(pagesList) => _pages.value = pagesList;
 
-  void changeTabIndex(int index) => selectedIndex = index;
+  void changeTabIndex(int index) => selectedPagePosition = index;
 
   @override
   void onInit() {
     changeTabIndex(Get.arguments);
-    bodyContent.value = <Widget>[
+    pages.value = <Widget>[
       HomePage(),
       CartPage(),
       ProfileUserPage(),

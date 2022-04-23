@@ -9,7 +9,7 @@ class HomePage extends GetView<CartController> {
    @override
    Widget build(BuildContext context) {
        return Scaffold(
-           appBar: AppBar(title: const Text('CartPage'),),
+           appBar: AppBar(title: const Text('HomePage'),),
            body: Container(),
        );
   }
