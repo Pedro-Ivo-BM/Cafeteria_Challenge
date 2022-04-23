@@ -1,4 +1,5 @@
 import 'package:cafeteria_challenge/core/common/constants/assets_constants.dart';
+import 'package:cafeteria_challenge/core/common/constants/images_constants.dart';
 import 'package:cafeteria_challenge/core/common/constants/layout_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -16,9 +17,7 @@ class SplashScreenWidget extends StatelessWidget {
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
-          image: AssetImage(
-            AssetsConstants.appBackground,
-          ),
+          image: ImagesConstants.appBackgroundImage,
           fit: BoxFit.cover,
         ),
       ),

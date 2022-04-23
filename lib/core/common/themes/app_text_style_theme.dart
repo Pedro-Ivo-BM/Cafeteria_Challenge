@@ -1,24 +1,58 @@
-// import 'package:flutter/cupertino.dart';
-// import 'colors_theme.dart';
+import 'package:flutter/cupertino.dart';
+import 'colors_theme.dart';
 
-// abstract class AppTextStyleTheme {
-//   static const double ninetyEightSize = 98.0;
-//   static const double fourtyFourSize = 44.0;
-//   static const double thirtyTwoSize = 32.0;
-//   static const double twentyEightSize = 28.0;
-//   static const double twentyFourSize = 24.0;
-//   static const double twentyTwoSize = 22.0;
-//   static const double twentySize = 20.0;
-//   static const double eighteenSize = 18.0;
-//   static const double seventeenSize = 17.0;
-//   static const double sixteenSize = 16.0;
-//   static const double fourteenSize = 14.0;
-//   static const double thirteenSize = 13.0;
-//   static const double twelveSize = 12.0;
-//   static const double tenSize = 10.0;
-//   static const double eightSize = 8.0;
+abstract class AppTextStyleTheme {
+  // static const double ninetyEightSize = 98.0;
+  // static const double fourtyFourSize = 44.0;
+  static const double thirtySixSize = 36.0;
+  // static const double thirtyTwoSize = 32.0;
+  // static const double twentyEightSize = 28.0;
+  // static const double twentyFourSize = 24.0;
+  static const double twentyThreeSize = 23.0;
+  static const double twentySize = 20.0;
+  // static const double eighteenSize = 18.0;
+  // static const double seventeenSize = 17.0;
+  // static const double sixteenSize = 16.0;
+  // static const double fourteenSize = 14.0;
+  // static const double thirteenSize = 13.0;
+  // static const double twelveSize = 12.0;
+  // static const double tenSize = 10.0;
+  // static const double eightSize = 8.0;
 
-//   static const String fontFamily = 'Inter';
+  static const FontWeight fontRegular = FontWeight.w400;
+  static const FontWeight fontBold = FontWeight.w700;
+  static const FontWeight fontExtraBold = FontWeight.w800;
+
+  static const String fontFamily = 'Sen';
+
+  static const TextStyle homePageTitleDefaultTextStyle = TextStyle(
+    fontFamily: fontFamily,
+    fontSize: thirtySixSize,
+    fontWeight: fontRegular,
+    color: ColorsTheme.black,
+  );
+  static final TextStyle homePageTitleColoredTextStyle = TextStyle(
+    fontFamily: fontFamily,
+    fontSize: thirtySixSize,
+    fontWeight: fontBold,
+    color: ColorsTheme.appDefaultPaletColor.shade700,
+  );
+
+  static const TextStyle homePageCoffeesListTextStyle = TextStyle(
+    fontFamily: fontFamily,
+    fontSize: twentySize,
+    fontWeight: fontBold,
+    color: ColorsTheme.defaultCoffeesNameColor,
+  );
+
+  static const TextStyle coffeeDetailsPageTitleTextStyle = TextStyle(
+    fontFamily: fontFamily,
+    fontSize: twentyThreeSize,
+    fontWeight: fontBold,
+    color: ColorsTheme.black,
+  );
+
+}
 
 //   static final TextStyle pageTitleTextStyle = TextStyle(
 //     fontFamily: fontFamily,
