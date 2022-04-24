@@ -1,6 +1,8 @@
 import 'package:cafeteria_challenge/core/routers/app_routers.dart';
 import 'package:cafeteria_challenge/ui/cart/cart_binding.dart';
 import 'package:cafeteria_challenge/ui/cart/cart_page.dart';
+import 'package:cafeteria_challenge/ui/details/details_binding.dart';
+import 'package:cafeteria_challenge/ui/details/details_page.dart';
 import 'package:cafeteria_challenge/ui/home/home_binding.dart';
 import 'package:cafeteria_challenge/ui/home/home_page.dart';
 import 'package:cafeteria_challenge/ui/profile_user/profile_user_binding.dart';
@@ -17,33 +19,38 @@ abstract class AppPages{
   static final List<GetPage> pages = [
     GetPage(
       name: AppRoutes.splashScreen,
-      page: () => SplashScreenPage(),
+      page: () => const SplashScreenPage(),
       binding: SplashScreenBinding(),
     ),
     GetPage(
       name: AppRoutes.standByScreen,
-      page: () => StandByScreenPage(),
+      page: () => const StandByScreenPage(),
       binding: StandByScreenBinding(),
     ),
     GetPage(
       name: AppRoutes.root,
-      page: () => RootPage(),
+      page: () => const RootPage(),
       binding:RootBinding(),
     ),
     GetPage(
       name: AppRoutes.home,
-      page: () => HomePage(),
+      page: () => const HomePage(),
       binding: HomeBinding(),
     ),
     GetPage(
       name: AppRoutes.cart,
-      page: () => CartPage(),
+      page: () => const CartPage(),
       binding: CartBinding(),
     ),
     GetPage(
       name: AppRoutes.profileUser,
-      page: () => ProfileUserPage(),
+      page: () => const ProfileUserPage(),
       binding: ProfileUserBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.details,
+      page: () => const DetailsPage(),
+      binding: DetailsBinding(),
     ),
   ];
 
