@@ -17,32 +17,32 @@ abstract class AppPages{
   static final List<GetPage> pages = [
     GetPage(
       name: AppRoutes.splashScreen,
-      page: () => SplashScreenPage(),
+      page: () => const SplashScreenPage(),
       binding: SplashScreenBinding(),
     ),
     GetPage(
       name: AppRoutes.standByScreen,
-      page: () => StandByScreenPage(),
+      page: () => const StandByScreenPage(),
       binding: StandByScreenBinding(),
     ),
     GetPage(
       name: AppRoutes.root,
-      page: () => RootPage(),
+      page: () => const RootPage(),
       binding:RootBinding(),
     ),
     GetPage(
       name: AppRoutes.home,
-      page: () => HomePage(),
+      page: () => const HomePage(),
       binding: HomeBinding(),
     ),
     GetPage(
       name: AppRoutes.cart,
-      page: () => CartPage(),
+      page: () => const CartPage(),
       binding: CartBinding(),
     ),
     GetPage(
       name: AppRoutes.profileUser,
-      page: () => ProfileUserPage(),
+      page: () => const ProfileUserPage(),
       binding: ProfileUserBinding(),
     ),
   ];

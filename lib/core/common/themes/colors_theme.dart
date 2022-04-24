@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 abstract class ColorsTheme {
-  static const Color defaultCoffeesNameColor = Color(0xFF2D140D);
+  static const Color defaultCoffeeColor = Color(0xFF2D140D);
   static const Color headerTextsColor = Color(0xFF000000);
   static const Color magnifyingGlassColor = Color(0xFF401414);
   static const Color magnifyingGlassHolderColor = Color(0xFF0101EE);
