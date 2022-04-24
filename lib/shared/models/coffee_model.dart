@@ -1,40 +1,47 @@
 import 'dart:convert';
 import 'package:cafeteria_challenge/shared/models/size_model.dart';
 
-CoffeeModel coffeeModelFromJson(String str) => CoffeeModel.fromJson(json.decode(str));
-
-String coffeeModelToJson(CoffeeModel data) => json.encode(data.toJson());
-
 class CoffeeModel {
-    CoffeeModel({
-        required this.id,
-        required this.createdAt,
-        required this.name,
-        required this.sizes,
-        required this.sugarPrice,
-    });
-
+    
     String id;
     DateTime createdAt;
     String name;
     List<Size> sizes;
     double sugarPrice;
 
-    factory CoffeeModel.fromJson(Map<String, dynamic> json) => CoffeeModel(
-        id: json["id"],
-        createdAt: DateTime.parse(json["createdAt"]),
-        name: json["name"],
-        sizes: List<Size>.from(json["sizes"].map((x) => Size.fromJson(x))),
-        sugarPrice: json["sugarPrice"].toDouble(),
-    );
+  CoffeeModel({
+    required this.id,
+    required this.createdAt,
+    required this.name,
+    required this.sizes,
+    required this.sugarPrice,
+  });
 
-    Map<String, dynamic> toJson() => {
-        "id": id,
-        "createdAt": createdAt.toIso8601String(),
-        "name": name,
-        "sizes": List<dynamic>.from(sizes.map((x) => x.toJson())),
-        "sugarPrice": sugarPrice,
+   
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'createdAt': createdAt.millisecondsSinceEpoch,
+      'name': name,
+      'sizes': sizes.map((x) => x.toMap()).toList(),
+      'sugarPrice': sugarPrice,
     };
+  }
+
+  factory CoffeeModel.fromMap(Map<String, dynamic> map) {
+    return CoffeeModel(
+      id: map['id'] ?? '',
+      createdAt: DateTime.parse(map['createdAt']),
+      name: map['name'] ?? '',
+      sizes: List<Size>.from(map['sizes']?.map((x) => Size.fromMap(x))),
+      sugarPrice: map['sugarPrice']?.toDouble() ?? 0.0,
+    );
+  }
+
+  String toJson() => json.encode(toMap());
+
+  factory CoffeeModel.fromJson(String source) => CoffeeModel.fromMap(json.decode(source));
 }
 
 

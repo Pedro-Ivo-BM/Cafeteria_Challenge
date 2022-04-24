@@ -7,7 +7,7 @@ abstract class ImagesConstants {
   static final Widget cappuccinoImage = SvgPicture.asset(AssetsConstants.cappuccino);
   static final Widget expressoImage = SvgPicture.asset(AssetsConstants.expresso);
   static final Widget latteImage = SvgPicture.asset(AssetsConstants.latte);
-  static final Widget macciatoImage = SvgPicture.asset(AssetsConstants.macciato);
+  static final Widget macchiatoImage = SvgPicture.asset(AssetsConstants.macciato);
   static final Widget mochaImage = SvgPicture.asset(AssetsConstants.mocha);
   static const AssetImage appBackgroundImage = AssetImage(AssetsConstants.appBackground);
   

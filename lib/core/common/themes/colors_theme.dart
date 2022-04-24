@@ -5,7 +5,7 @@ abstract class ColorsTheme {
   static const Color headerTextsColor = Color(0xFF000000);
   static const Color magnifyingGlassColor = Color(0xFF401414);
   static const Color magnifyingGlassHolderColor = Color(0xFF0101EE);
-  static const Color cancelButtonColor = Color(0xFFE86130);
+  static const Color activeButtonColor = Color(0xFFE86130);
   static const Color white = Color(0xFFFFFFFF);
   static const Color black = Color(0xFF000000);
 

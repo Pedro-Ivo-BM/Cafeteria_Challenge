@@ -1,6 +1,8 @@
 import 'package:cafeteria_challenge/core/routers/app_routers.dart';
 import 'package:cafeteria_challenge/ui/cart/cart_binding.dart';
 import 'package:cafeteria_challenge/ui/cart/cart_page.dart';
+import 'package:cafeteria_challenge/ui/details/details_binding.dart';
+import 'package:cafeteria_challenge/ui/details/details_page.dart';
 import 'package:cafeteria_challenge/ui/home/home_binding.dart';
 import 'package:cafeteria_challenge/ui/home/home_page.dart';
 import 'package:cafeteria_challenge/ui/profile_user/profile_user_binding.dart';
@@ -44,6 +46,11 @@ abstract class AppPages{
       name: AppRoutes.profileUser,
       page: () => const ProfileUserPage(),
       binding: ProfileUserBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.details,
+      page: () => const DetailsPage(),
+      binding: DetailsBinding(),
     ),
   ];
 

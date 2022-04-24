@@ -1,19 +1,30 @@
+import 'dart:convert';
+
 class Size {
-    Size({
-        required this.size,
-        required this.price,
-    });
+  String size;
+  double price;
+  Size({
+    required this.size,
+    required this.price,
+  });
 
-    String size;
-    double price;
+    
 
-    factory Size.fromJson(Map<String, dynamic> json) => Size(
-        size: json["size"],
-        price: json["price"].toDouble(),
-    );
-
-    Map<String, dynamic> toJson() => {
-        "size": size,
-        "price": price,
+  Map<String, dynamic> toMap() {
+    return {
+      'size': size,
+      'price': price,
     };
+  }
+
+  factory Size.fromMap(Map<String, dynamic> map) {
+    return Size(
+      size: map['size'] ?? '',
+      price: map['price']?.toDouble() ?? 0.0,
+    );
+  }
+
+  String toJson() => json.encode(toMap());
+
+  factory Size.fromJson(String source) => Size.fromMap(json.decode(source));
 }

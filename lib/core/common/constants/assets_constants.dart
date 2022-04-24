@@ -14,7 +14,7 @@ abstract class AssetsConstants {
   static const String sugarCubeTransversal = 'assets/images/sugar_cube_transversal.svg';
   static const String cupSizeAbled = 'assets/images/cup_size_abled.svg';
   static const String cupSizeDisabled = 'assets/images/cup_size_disabled.svg';
-  static const String homeLogo = '  assets/images/home_logo.svg';
-  static const String coffeeCartLogo = '  assets/images/coffee_cart_logo.svg';
-  static const String profileLogo = '  assets/images/profile_logo.svg';
+  static const String homeLogo = 'assets/images/home_logo.svg';
+  static const String coffeeCartLogo = 'assets/images/coffee_cart_logo.svg';
+  static const String profileLogo = 'assets/images/profile_logo.svg';
 }
