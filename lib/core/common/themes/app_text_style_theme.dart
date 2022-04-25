@@ -49,6 +49,13 @@ abstract class AppTextStyleTheme {
     color: ColorsTheme.black,
   );
 
+  static final TextStyle coffeeDetailsPageItemsWithOpacityTextStyle = TextStyle(
+    fontFamily: fontFamily,
+    fontSize: twentySize,
+    fontWeight: fontRegular,
+    color: ColorsTheme.black.withOpacity(0.2),
+  );
+
   static const TextStyle coffeeDetailsPageItemsAmountTextStyle = TextStyle(
     fontFamily: fontFamily,
     fontSize: eighteenSize,

@@ -17,9 +17,10 @@ class RootController extends GetxController {
   set pages(pagesList) => _pages.value = pagesList;
 
   RxBool isScreenTapped = false.obs;
+  RxBool isScreenClosed = false.obs;
 
   Future<void> standByModeCall() async {
-    while (true) {
+    while (!isScreenClosed.value) {
       await Future.delayed(
         const Duration(seconds: GlobalConstants.standByModeTimeInSeconds),
         () async {
@@ -36,6 +37,7 @@ class RootController extends GetxController {
 
   @override
   void onInit() {
+    isScreenClosed.value = false;
     selectedPagePosition = Get.arguments;
     pages.value = <Widget>[
       HomePage(),
@@ -45,4 +47,11 @@ class RootController extends GetxController {
     super.onInit();
     standByModeCall();
   }
+
+  @override
+  void onClose() {
+    isScreenClosed.value = true;
+  }
+
+
 }
