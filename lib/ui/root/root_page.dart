@@ -48,6 +48,11 @@ class RootPage extends GetView<RootController> {
                   backgroundColor: Colors.transparent,
                   currentIndex: controller.selectedPagePosition,
                   onTap: (index) {
+                    if(index == 1){
+                      index = 0;
+                      controller.goToCartPage();
+                      
+                    }
                     controller.selectedPagePosition = index;
                     controller.isScreenTapped.value = true;
                   },

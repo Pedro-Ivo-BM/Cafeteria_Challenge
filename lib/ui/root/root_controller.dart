@@ -19,6 +19,10 @@ class RootController extends GetxController {
   RxBool isScreenTapped = false.obs;
   RxBool isScreenClosed = false.obs;
 
+  void goToCartPage(){
+    Get.toNamed(AppRoutes.cart);
+  }
+
   Future<void> standByModeCall() async {
     while (!isScreenClosed.value) {
       await Future.delayed(
@@ -41,7 +45,7 @@ class RootController extends GetxController {
     selectedPagePosition = Get.arguments;
     pages.value = <Widget>[
       HomePage(),
-      CartPage(),
+      SizedBox(),
       ProfileUserPage(),
     ];
     super.onInit();

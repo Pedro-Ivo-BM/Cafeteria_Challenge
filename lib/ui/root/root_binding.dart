@@ -12,7 +12,7 @@ class RootBinding implements Bindings {
     Get.lazyPut<ICoffeeServices>(() => CoffeeServices());
     Get.put(RootController());
     Get.put(HomeController(Get.find()));
-    Get.put(CartController());
+    //Get.put(CartController());
     Get.put(ProfileUserController());
   }
 }

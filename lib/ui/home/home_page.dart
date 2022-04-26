@@ -5,6 +5,7 @@ import 'package:cafeteria_challenge/core/common/utils/coffee_image_utils.dart';
 import 'package:cafeteria_challenge/ui/cart/cart_controller.dart';
 import 'package:cafeteria_challenge/ui/home/home_controller.dart';
 import 'package:cafeteria_challenge/ui/widgets/home_page_list_tile_widget.dart';
+import 'package:cafeteria_challenge/ui/widgets/searching_input_text_widget.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -19,13 +20,8 @@ class HomePage extends GetView<HomeController> {
             backgroundColor: ColorsTheme.appDefaultPaletColor.shade100,
             appBar: AppBar(
               actions: [
-                IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.search,
-                      size: 30,
-                      color: ColorsTheme.black,
-                    ))
+                IconButton(onPressed: (){}, icon: Icon(Icons.search))
+                
               ],
               elevation: 0,
               backgroundColor: ColorsTheme.appDefaultPaletColor.shade100,

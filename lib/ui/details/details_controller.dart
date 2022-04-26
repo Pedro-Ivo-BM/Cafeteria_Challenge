@@ -7,8 +7,17 @@ class DetailsController extends GetxController {
   final CoffeeModel selectedCoffee = Get.arguments;
   RxBool isScreenTapped = false.obs;
   RxBool isScreenClosed = false.obs;
+  RxInt amountOfCoffee = 0.obs;
+  RxInt amountOfSugarCubes = 0.obs;
+  RxDouble selectedSizeCoffeePrice = 0.0.obs;
+  RxDouble itemPrice = 0.0.obs;
   RxInt selectedCoffeeSizePosition = 0.obs;
   RxInt selectedSugarQuantity = 0.obs;
+
+ void goToCartPage(){
+    Get.toNamed(AppRoutes.cart);
+  }
+
   Future<void> standByModeCall() async {
     while (!isScreenClosed.value) {
       await Future.delayed(
