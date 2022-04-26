@@ -86,19 +86,20 @@ class CartPage extends GetView<CartController> {
                             ),
                             Spacer(),
                             GestureDetector(
-                              onTap: () {},
-                              // controller.amountOfCoffee.value <= 0
-                              //     ? () {}
-                              //     : () {
-                              //         --controller.amountOfCoffee.value;
-                              //         controller.itemUnityPrice.value =
-                              //   (controller.selectedSugarQuantity.value *
-                              //                   1.0 *
-                              //                   controller.selectedCoffee.sugarPrice +
-                              //               controller.selectedSizeCoffeePrice.value);
-
-                              //   controller.itemPrice.value = controller.amountOfCoffee.value * controller.itemUnityPrice.value;
-                              //     },
+                              onTap: 
+                              controller.itemsList[index].amount <= 0
+                                  ? () { 
+                                         //controller.deleteItemCart(itemId: controller.itemsList[index].id);
+                                         controller.itemsList.remove(index);
+                                  }
+                                  : () { 
+                                        --controller.itemListAmount.value;
+                                         //--controller.itemsList[index].amount;
+                                         //controller.itemListAmount.value = controller.itemsList[index].amount;
+                                          // await controller.updateItemCart(newAmount: controller.itemsList[index].amount, itemId: controller.itemsList[index].id);
+                                          // await controller.onGetItemsList();
+                                  },
+                           
                               child: Container(
                                 child: const Center(
                                   child: Icon(Icons.remove,
@@ -118,8 +119,9 @@ class CartPage extends GetView<CartController> {
                             Container(
                               child: Center(
                                 child: Text(
-                                  "1",
-                                  //controller.amountOfCoffee.value.toString(),
+                                  controller.itemListAmount.value.toString(),
+                                  //controller.itemsList[index].amount.toString(),
+                                  
                                   style: AppTextStyleTheme
                                       .coffeeDetailsPageItemsAmountTextStyle,
                                 ),
@@ -128,16 +130,15 @@ class CartPage extends GetView<CartController> {
                               width: incrementAmoutButtonWidthProportioned,
                             ),
                             GestureDetector(
-                              onTap: () {
-                                // ++controller.amountOfCoffee.value;
-                                // controller.itemUnityPrice.value =
-                                // (controller.selectedSugarQuantity.value *
-                                //                 1.0 *
-                                //                 controller.selectedCoffee.sugarPrice +
-                                //             controller.selectedSizeCoffeePrice.value);
-
-                                // controller.itemPrice.value = controller.amountOfCoffee.value * controller.itemUnityPrice.value;
-                              },
+                              onTap: () { 
+                                ++controller.itemListAmount.value;
+                                        // ++controller.itemsList[index].amount;
+                                         //controller.itemListAmount.value = controller.itemsList[index].amount;
+                                        //  controller.updateItemCart(newAmount: controller.itemsList[index].amount, itemId: controller.itemsList[index].id);
+                                        //  controller.onGetItemsList();
+                                  },
+                             
+                              
                               child: Container(
                                 child: const Center(
                                   child: const Icon(

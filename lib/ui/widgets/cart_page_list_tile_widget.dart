@@ -34,7 +34,7 @@ class CartPageListTileWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
               Text(coffeeSize),
-              Text('Size'),
+              Text(' Size'),
             ],),
             Spacer(flex: 6,),
             CoffeeImageUtils.obtainSugarImageByAmount(sugarQuantity),

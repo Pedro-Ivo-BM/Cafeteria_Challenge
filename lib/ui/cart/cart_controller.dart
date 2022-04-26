@@ -6,6 +6,8 @@ import 'package:get/get.dart';
 class CartController extends GetxController { 
   RxBool isCartListLoadingComplete = false.obs;
   List<ItemsModel> itemsList = <ItemsModel>[].obs;
+  RxInt itemListAmount = 0.obs;
+  RxDouble itemPrice = 0.0.obs;
   final IItemsServices _iItemsServices;
   CartController(this._iItemsServices,);
 
@@ -27,7 +29,7 @@ class CartController extends GetxController {
 
   Future<void> updateItemCart({ required int newAmount, required String itemId}) async{
     try{
-      _iItemsServices.updateItem(newAmount, itemId); 
+      await  _iItemsServices.updateItem(newAmount, itemId); 
     }on RestException catch (e) {
       throw e.message;
     }
@@ -35,7 +37,7 @@ class CartController extends GetxController {
 
   Future<void> deleteItemCart({ required String itemId}) async{
     try{
-      _iItemsServices.deleteItem(itemId); 
+       await _iItemsServices.deleteItem(itemId); 
     }on RestException catch (e) {
       throw e.message;
     }
