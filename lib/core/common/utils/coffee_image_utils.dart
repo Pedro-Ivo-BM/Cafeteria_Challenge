@@ -28,11 +28,11 @@ abstract class CoffeeImageUtils {
       return Stack(
         children: [
           Transform.translate(
-            offset: const Offset(-11, 0),
+            offset: const Offset(0, 0),
             child: SvgPicture.asset(AssetsConstants.sugarCubeAbled),
           ),
           Transform.translate(
-              offset: const Offset(9, 0),
+              offset: const Offset(20, 0),
               child: SvgPicture.asset(AssetsConstants.sugarCubeAbled)),
         ],
       );
