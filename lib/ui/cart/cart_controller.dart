@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 
 class CartController extends GetxController { 
   RxBool isCartListLoadingComplete = false.obs;
-  List<ItemsModel> itemsList = <ItemsModel>[].obs;
+  RxList<ItemsModel> itemsList = <ItemsModel>[].obs;
   RxInt itemListAmount = 2.obs;
   RxDouble itemPrice = 0.0.obs;
   final IItemsServices _iItemsServices;
@@ -19,7 +19,7 @@ class CartController extends GetxController {
   
   Future<List<ItemsModel>> onGetItemsList () async{
     try{
-      itemsList = await _iItemsServices.getItems();
+      itemsList.value = await _iItemsServices.getItems();
       isCartListLoadingComplete.toggle();
       return itemsList;
     }on RestException catch (e) {

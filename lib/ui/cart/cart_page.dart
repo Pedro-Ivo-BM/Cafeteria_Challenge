@@ -4,6 +4,7 @@ import 'package:cafeteria_challenge/core/common/themes/colors_theme.dart';
 import 'package:cafeteria_challenge/core/common/utils/coffee_image_utils.dart';
 import 'package:cafeteria_challenge/ui/cart/cart_controller.dart';
 import 'package:cafeteria_challenge/ui/widgets/cart_page_list_tile_widget.dart';
+import 'package:cafeteria_challenge/ui/widgets/default_button_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -75,32 +76,39 @@ class CartPage extends GetView<CartController> {
                         );
                       },
                       itemBuilder: (context, index) {
-                        return Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            CartPageListTileWidget(
-                              coffeeName:
-                                  controller.itemsList[index].coffeeName,
-                              coffeeSize: controller.itemsList[index].size,
-                              sugarQuantity:
-                                  controller.itemsList[index].sugarAmount,
-                            ),
-                            Spacer(),
-                             GestureDetector(
-                                  onTap: 
-                                  // controller.itemsList[index].amount <= 0
-                                  //     ? () {
-                                  //         //controller.deleteItemCart(itemId: controller.itemsList[index].id);
-                                  //         controller.itemsList.remove(index);
-                                  //       }
-                                  //     : 
-                                      () {
-                                          --controller.itemListAmount.value;
-                                          //--controller.itemsList[index].amount;
-                                          //controller.itemListAmount.value = controller.itemsList[index].amount;
-                                          // await controller.updateItemCart(newAmount: controller.itemsList[index].amount, itemId: controller.itemsList[index].id);
-                                          // await controller.onGetItemsList();
-                                        },
+                        return Obx(() => Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                CartPageListTileWidget(
+                                  coffeeName:
+                                      controller.itemsList[index].coffeeName,
+                                  coffeeSize: controller.itemsList[index].size,
+                                  sugarQuantity:
+                                      controller.itemsList[index].sugarAmount,
+                                ),
+                                Spacer(),
+                                GestureDetector(
+                                  onTap:
+                                      // controller.itemsList[index].amount <= 0
+                                      //     ? () async{
+                                      //         await controller.deleteItemCart(itemId: controller.itemsList[index].id);
+                                      //         controller.itemsList.removeAt(index);
+                                      //       }
+                                      //     :
+                                      () async{
+                                    //--controller.itemListAmount.value;
+                                    --controller.itemsList[index].amount;
+                                    if(controller.itemsList[index].amount == 0){
+                                      await controller.deleteItemCart(itemId: controller.itemsList[index].id);
+                                      controller.itemsList.removeAt(index);
+                                    }else{
+                                      await controller.updateItemCart(newAmount: controller.itemsList[index].amount, itemId: controller.itemsList[index].id);
+                                     controller.itemsList[index] = controller.itemsList[index];
+                                    }
+                                    //controller.itemListAmount.value = controller.itemsList[index].amount;
+                                    // await controller.updateItemCart(newAmount: controller.itemsList[index].amount, itemId: controller.itemsList[index].id);
+                                    // await controller.onGetItemsList();
+                                  },
                                   child: Container(
                                     child: const Center(
                                       child: Icon(Icons.remove,
@@ -119,23 +127,28 @@ class CartPage extends GetView<CartController> {
                                         )),
                                   ),
                                 ),
-                            Container(
-                              child: Center(
-                                child: Text(
-                                  controller.itemListAmount.value.toString(),
-                                  //controller.itemsList[index].amount.toString(),
+                                Obx(() => Container(
+                                      child: Center(
+                                        child: Text(
+                                        
+                                          controller.itemsList[index].amount
+                                              .toString(),
 
-                                  style: AppTextStyleTheme
-                                      .coffeeDetailsPageItemsAmountTextStyle,
-                                ),
-                              ),
-                              height: incrementAmoutButtonHeightProportioned,
-                              width: incrementAmoutButtonWidthProportioned,
-                            ),
-                            GestureDetector(
-                                  onTap: () {
-                                    ++controller.itemListAmount.value;
-                                    // ++controller.itemsList[index].amount;
+                                          style: AppTextStyleTheme
+                                              .coffeeDetailsPageItemsAmountTextStyle,
+                                        ),
+                                      ),
+                                      height:
+                                          incrementAmoutButtonHeightProportioned,
+                                      width:
+                                          incrementAmoutButtonWidthProportioned,
+                                    )),
+                                GestureDetector(
+                                  onTap: () async {
+                                    //++controller.itemListAmount.value;
+                                    ++controller.itemsList[index].amount;
+                                     await controller.updateItemCart(newAmount: controller.itemsList[index].amount, itemId: controller.itemsList[index].id);
+                                    controller.itemsList[index] = controller.itemsList[index];
                                     //controller.itemListAmount.value = controller.itemsList[index].amount;
                                     //  controller.updateItemCart(newAmount: controller.itemsList[index].amount, itemId: controller.itemsList[index].id);
                                     //  controller.onGetItemsList();
@@ -161,8 +174,8 @@ class CartPage extends GetView<CartController> {
                                         )),
                                   ),
                                 ),
-                          ],
-                        );
+                              ],
+                            ));
                       },
                     ),
                   ],
@@ -171,6 +184,11 @@ class CartPage extends GetView<CartController> {
             ),
             bottomSheet: Container(
               height: 60,
+              child: Row(
+                children: [
+                  //DefaultButtonWidget(onPressed: onPressed, content: content)
+                ],
+              ),
             ),
           )
         : Center(
