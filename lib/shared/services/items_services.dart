@@ -19,14 +19,13 @@ class ItemsServices implements IItemsServices {
   }
 
   @override
-  Future addItem(String size, int amount, int sugarAmount ,double unityPrice, String coffeeName) async {
+  Future addItem(int size, int amount, int sugarAmount ,double unityPrice) async {
     try {
       var body ={
 	      "size": size,
 	      "amount": amount,
 	      "sugarAmount": sugarAmount,
         "unityPrice" : unityPrice,
-        "coffeeName" : coffeeName,
       };
       await restClient.dio.post('/orders/1/items', data: body);
     } on DioError catch (e) {

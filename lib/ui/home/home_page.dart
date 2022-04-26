@@ -20,7 +20,7 @@ class HomePage extends GetView<HomeController> {
             backgroundColor: ColorsTheme.appDefaultPaletColor.shade100,
             appBar: AppBar(
               actions: [
-                IconButton(onPressed: (){}, icon: Icon(Icons.search, color: ColorsTheme.black,))
+                IconButton(onPressed: (){}, icon: Icon(Icons.search))
                 
               ],
               elevation: 0,
@@ -65,7 +65,7 @@ class HomePage extends GetView<HomeController> {
                       );
                     },
                     itemBuilder: (context, index) {
-                      return 
+                      return //Text('socorro');
                           GestureDetector(
                             onTap: ()=> controller.goToDetailsPage(controller.coffeeList[index]),
                             child: HomePageListTileWidget(

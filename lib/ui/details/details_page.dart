@@ -155,17 +155,19 @@ class DetailsPage extends GetView<DetailsController> {
                       ),
                     ],
                   ),
+                  ////////////////////////////////////////////// price
                   const SizedBox(
                     height: 4,
                   ),
                   Text(
-                    controller.itemPrice.value.toStringAsFixed(2),
+                    controller.itemPrice.value.toString(),
                     style:
                         AppTextStyleTheme.coffeeDetailsPageItemsPriceTextStyle,
                   ),
                   const SizedBox(
                     height: 10,
                   ),
+//////////////////////////////////////////////////////////// coffe size
                   const Text(
                     'Size',
                     style: AppTextStyleTheme.coffeeDetailsPageItemsTextStyle,
@@ -394,10 +396,9 @@ class DetailsPage extends GetView<DetailsController> {
                         content: 'Add to cart',
                         onPressed: controller.amountOfCoffee.value > 0 ? () => controller.createItemToCart(
                           amount: controller.amountOfCoffee.value,
-                          size: controller.selectedCoffee.sizes[controller.selectedCoffeeSizePosition.value].size,
+                          size: controller.selectedCoffeeSizePosition.value,
                           sugarAmount: controller.selectedSugarQuantity.value,
                           unityPrice: controller.itemUnityPrice.value,
-                          coffeeName: controller.selectedCoffee.name
                         ) : (){},
                       ),
                       const Spacer(),

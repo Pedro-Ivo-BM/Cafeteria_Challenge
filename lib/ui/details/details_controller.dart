@@ -23,9 +23,9 @@ DetailsController(this._iItemsServices,);
     Get.toNamed(AppRoutes.cart);
   }
 
-  Future<void> createItemToCart({required String size, required int amount, required int sugarAmount, required double unityPrice, required String coffeeName}) async{
+  Future<void> createItemToCart({required int size, required int amount, required int sugarAmount, required double unityPrice}) async{
     try{
-      _iItemsServices.addItem(size , amount, sugarAmount, unityPrice, coffeeName); 
+      _iItemsServices.addItem(size , amount, sugarAmount, unityPrice); 
     }on RestException catch (e) {
       throw e.message;
     }
