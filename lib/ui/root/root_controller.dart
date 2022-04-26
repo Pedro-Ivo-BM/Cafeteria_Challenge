@@ -1,6 +1,5 @@
 import 'package:cafeteria_challenge/core/common/constants/global_constants.dart';
 import 'package:cafeteria_challenge/core/routers/app_routers.dart';
-import 'package:cafeteria_challenge/ui/cart/cart_page.dart';
 import 'package:cafeteria_challenge/ui/home/home_page.dart';
 import 'package:cafeteria_challenge/ui/profile_user/profile_user_page.dart';
 import 'package:flutter/material.dart';
@@ -44,9 +43,9 @@ class RootController extends GetxController {
     isScreenClosed.value = false;
     selectedPagePosition = Get.arguments;
     pages.value = <Widget>[
-      HomePage(),
-      SizedBox(),
-      ProfileUserPage(),
+      const HomePage(),
+      const SizedBox(),
+      const ProfileUserPage(),
     ];
     super.onInit();
     standByModeCall();

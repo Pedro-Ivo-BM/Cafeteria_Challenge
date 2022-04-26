@@ -2,13 +2,11 @@ import 'package:cafeteria_challenge/core/common/constants/assets_constants.dart'
 import 'package:cafeteria_challenge/core/common/constants/icons_constants.dart';
 import 'package:cafeteria_challenge/core/common/constants/images_constants.dart';
 import 'package:cafeteria_challenge/core/common/themes/app_text_style_theme.dart';
-import 'package:cafeteria_challenge/core/common/themes/app_theme.dart';
 import 'package:cafeteria_challenge/core/common/themes/colors_theme.dart';
 import 'package:cafeteria_challenge/core/common/utils/coffee_image_utils.dart';
 import 'package:cafeteria_challenge/ui/details/details_controller.dart';
 import 'package:cafeteria_challenge/ui/widgets/circle_button_widget.dart';
 import 'package:cafeteria_challenge/ui/widgets/default_button_widget.dart';
-import 'package:cafeteria_challenge/ui/widgets/details_page_options_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -78,32 +76,40 @@ class DetailsPage extends GetView<DetailsController> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Row(
                     children: [
                       Text(
                         controller.selectedCoffee.name,
-                        style: AppTextStyleTheme.coffeeDetailsPageItemsTextStyle,
+                        style:
+                            AppTextStyleTheme.coffeeDetailsPageItemsTextStyle,
                       ),
-                      Spacer(),
+                      const Spacer(),
                       GestureDetector(
                         onTap: controller.amountOfCoffee.value <= 0
                             ? () {}
-                            : () { --controller.amountOfCoffee.value;
-                             controller.itemPrice.value = controller.amountOfCoffee.value*(controller.selectedSugarQuantity.value*1.0*controller.selectedCoffee.sugarPrice + controller.selectedSizeCoffeePrice.value);
-                            },
+                            : () {
+                                --controller.amountOfCoffee.value;
+                                controller.itemUnityPrice.value = 
+                          (controller.selectedSugarQuantity.value *
+                                          1.0 *
+                                          controller.selectedCoffee.sugarPrice +
+                                      controller.selectedSizeCoffeePrice.value);
+
+                          controller.itemPrice.value = controller.amountOfCoffee.value * controller.itemUnityPrice.value;
+                              },
                         child: Container(
-                          child: Center(
+                          child: const Center(
                             child: Icon(Icons.remove, color: ColorsTheme.white),
                           ),
                           height: incrementAmoutButtonHeightProportioned,
                           width: incrementAmoutButtonWidthProportioned,
                           decoration: BoxDecoration(
                               color: ColorsTheme.appDefaultPaletColor.shade400,
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(15),
+                              borderRadius: const BorderRadius.only(
+                                topLeft: const Radius.circular(15),
                                 bottomLeft: Radius.circular(15),
                               )),
                         ),
@@ -120,38 +126,49 @@ class DetailsPage extends GetView<DetailsController> {
                         width: incrementAmoutButtonWidthProportioned,
                       ),
                       GestureDetector(
-                        onTap: () { ++controller.amountOfCoffee.value;
-                         controller.itemPrice.value = controller.amountOfCoffee.value*(controller.selectedSugarQuantity.value*1.0*controller.selectedCoffee.sugarPrice + controller.selectedSizeCoffeePrice.value);
+                        onTap: () {
+                          ++controller.amountOfCoffee.value;
+                          controller.itemUnityPrice.value = 
+                          (controller.selectedSugarQuantity.value *
+                                          1.0 *
+                                          controller.selectedCoffee.sugarPrice +
+                                      controller.selectedSizeCoffeePrice.value);
+
+                          controller.itemPrice.value = controller.amountOfCoffee.value * controller.itemUnityPrice.value;
                         },
                         child: Container(
-                          child: Center(
-                            child: Icon(Icons.add, color: ColorsTheme.white,),
+                          child: const Center(
+                            child: const Icon(
+                              Icons.add,
+                              color: ColorsTheme.white,
+                            ),
                           ),
                           height: incrementAmoutButtonHeightProportioned,
                           width: incrementAmoutButtonWidthProportioned,
                           decoration: BoxDecoration(
                               color: ColorsTheme.appDefaultPaletColor.shade400,
-                              borderRadius: BorderRadius.only(
+                              borderRadius: const BorderRadius.only(
                                 topRight: Radius.circular(15),
-                                bottomRight: Radius.circular(15),
+                                bottomRight: const Radius.circular(15),
                               )),
                         ),
                       ),
                     ],
                   ),
                   ////////////////////////////////////////////// price
-                  SizedBox(
+                  const SizedBox(
                     height: 4,
                   ),
                   Text(
-                   controller.itemPrice.value.toString() ,
-                    style: AppTextStyleTheme.coffeeDetailsPageItemsPriceTextStyle,
+                    controller.itemPrice.value.toString(),
+                    style:
+                        AppTextStyleTheme.coffeeDetailsPageItemsPriceTextStyle,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
 //////////////////////////////////////////////////////////// coffe size
-                  Text(
+                  const Text(
                     'Size',
                     style: AppTextStyleTheme.coffeeDetailsPageItemsTextStyle,
                   ),
@@ -166,11 +183,19 @@ class DetailsPage extends GetView<DetailsController> {
                         selectedItemColor:
                             ColorsTheme.appDefaultPaletColor.shade400,
                         backgroundColor: Colors.transparent,
-                        currentIndex: controller.selectedCoffeeSizePosition.value,
+                        currentIndex:
+                            controller.selectedCoffeeSizePosition.value,
                         onTap: (index) {
                           controller.selectedCoffeeSizePosition.value = index;
-                          controller.selectedSizeCoffeePrice.value = controller.selectedCoffee.sizes[index].price;
-                          controller.itemPrice.value = controller.amountOfCoffee.value*(controller.selectedSugarQuantity.value*1.0*controller.selectedCoffee.sugarPrice + controller.selectedSizeCoffeePrice.value);
+                          controller.selectedSizeCoffeePrice.value =
+                              controller.selectedCoffee.sizes[index].price;
+                          controller.itemUnityPrice.value = 
+                          (controller.selectedSugarQuantity.value *
+                                          1.0 *
+                                          controller.selectedCoffee.sugarPrice +
+                                      controller.selectedSizeCoffeePrice.value);
+
+                          controller.itemPrice.value = controller.amountOfCoffee.value * controller.itemUnityPrice.value;
                         },
                         items: [
                           BottomNavigationBarItem(
@@ -188,7 +213,7 @@ class DetailsPage extends GetView<DetailsController> {
                           ),
                           BottomNavigationBarItem(
                             icon: Transform.translate(
-                              offset: Offset(-5, 0),
+                              offset: const Offset(-5, 0),
                               child: SvgPicture.asset(
                                 AssetsConstants.cupSizeDisabled,
                                 width: 52,
@@ -197,7 +222,7 @@ class DetailsPage extends GetView<DetailsController> {
                             ),
                             label: "",
                             activeIcon: Transform.translate(
-                              offset: Offset(-5, 0),
+                              offset: const Offset(-5, 0),
                               child: SvgPicture.asset(
                                 AssetsConstants.cupSizeAbled,
                                 width: 52,
@@ -223,9 +248,10 @@ class DetailsPage extends GetView<DetailsController> {
                   ///////////////////////////////////////////////////////////////////////////////////////// sugar
                   Row(
                     children: [
-                      Text(
+                      const Text(
                         'Sugar',
-                        style: AppTextStyleTheme.coffeeDetailsPageItemsTextStyle,
+                        style:
+                            AppTextStyleTheme.coffeeDetailsPageItemsTextStyle,
                       ),
                       Text(' (In Cubes)',
                           style: AppTextStyleTheme
@@ -244,7 +270,14 @@ class DetailsPage extends GetView<DetailsController> {
                         currentIndex: controller.selectedSugarQuantity.value,
                         onTap: (index) {
                           controller.selectedSugarQuantity.value = index;
-                          controller.itemPrice.value = controller.amountOfCoffee.value*(controller.selectedSugarQuantity.value*1.0*controller.selectedCoffee.sugarPrice + controller.selectedSizeCoffeePrice.value);
+                          controller.itemUnityPrice.value = 
+                          (controller.selectedSugarQuantity.value *
+                                          1.0 *
+                                          controller.selectedCoffee.sugarPrice +
+                                      controller.selectedSizeCoffeePrice.value);
+
+                          controller.itemPrice.value = controller.amountOfCoffee.value * controller.itemUnityPrice.value;
+                                  
                         },
                         items: [
                           BottomNavigationBarItem(
@@ -262,7 +295,8 @@ class DetailsPage extends GetView<DetailsController> {
                             label: "",
                             activeIcon: Stack(
                               children: [
-                                SvgPicture.asset(AssetsConstants.sugarCubeAbled),
+                                SvgPicture.asset(
+                                    AssetsConstants.sugarCubeAbled),
                                 SvgPicture.asset(
                                   AssetsConstants.sugarCubeTransversalCut,
                                   color: ColorsTheme.defaultCoffeeColor,
@@ -276,7 +310,7 @@ class DetailsPage extends GetView<DetailsController> {
                             icon: Stack(
                               children: [
                                 Transform.translate(
-                                    offset: Offset(-5, 0),
+                                    offset: const Offset(-5, 0),
                                     child: SvgPicture.asset(
                                         AssetsConstants.sugarCubeDisabled)),
                               ],
@@ -285,7 +319,7 @@ class DetailsPage extends GetView<DetailsController> {
                             activeIcon: Stack(
                               children: [
                                 Transform.translate(
-                                    offset: Offset(-5, 0),
+                                    offset: const Offset(-5, 0),
                                     child: SvgPicture.asset(
                                         AssetsConstants.sugarCubeAbled)),
                               ],
@@ -295,12 +329,12 @@ class DetailsPage extends GetView<DetailsController> {
                             icon: Stack(
                               children: [
                                 Transform.translate(
-                                  offset: Offset(-11, 0),
+                                  offset: const Offset(-11, 0),
                                   child: SvgPicture.asset(
                                       AssetsConstants.sugarCubeDisabled),
                                 ),
                                 Transform.translate(
-                                    offset: Offset(9, 0),
+                                    offset: const Offset(9, 0),
                                     child: SvgPicture.asset(
                                         AssetsConstants.sugarCubeDisabled)),
                               ],
@@ -309,12 +343,12 @@ class DetailsPage extends GetView<DetailsController> {
                             activeIcon: Stack(
                               children: [
                                 Transform.translate(
-                                  offset: Offset(-11, 0),
+                                  offset: const Offset(-11, 0),
                                   child: SvgPicture.asset(
                                       AssetsConstants.sugarCubeAbled),
                                 ),
                                 Transform.translate(
-                                    offset: Offset(9, 0),
+                                    offset: const Offset(9, 0),
                                     child: SvgPicture.asset(
                                         AssetsConstants.sugarCubeAbled)),
                               ],
@@ -326,11 +360,11 @@ class DetailsPage extends GetView<DetailsController> {
                                 SvgPicture.asset(
                                     AssetsConstants.sugarCubeDisabled),
                                 Transform.translate(
-                                    offset: Offset(20, 0),
+                                    offset: const Offset(20, 0),
                                     child: SvgPicture.asset(
                                         AssetsConstants.sugarCubeDisabled)),
                                 Transform.translate(
-                                    offset: Offset(10, -20),
+                                    offset: const Offset(10, -20),
                                     child: SvgPicture.asset(
                                         AssetsConstants.sugarCubeDisabled)),
                               ],
@@ -338,13 +372,14 @@ class DetailsPage extends GetView<DetailsController> {
                             label: "",
                             activeIcon: Stack(
                               children: [
-                                SvgPicture.asset(AssetsConstants.sugarCubeAbled),
+                                SvgPicture.asset(
+                                    AssetsConstants.sugarCubeAbled),
                                 Transform.translate(
-                                    offset: Offset(20, 0),
+                                    offset: const Offset(20, 0),
                                     child: SvgPicture.asset(
                                         AssetsConstants.sugarCubeAbled)),
                                 Transform.translate(
-                                    offset: Offset(10, -20),
+                                    offset: const Offset(10, -20),
                                     child: SvgPicture.asset(
                                         AssetsConstants.sugarCubeAbled)),
                               ],
@@ -352,16 +387,29 @@ class DetailsPage extends GetView<DetailsController> {
                           ),
                         ]),
                   ),
-                  SizedBox(height: 10,),
-                  Row(children: [
-                    DefaultButtonWidget(content: 'Add to cart', onPressed: (){}, ),
-                    Spacer(),
-                    CircleButtonWidget(icon: IconsConstants.cartLogoIcon, color:  ColorsTheme.appDefaultPaletColor.shade500, onPressed: () => controller.goToCartPage(),),
-                  ],)
-                  ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-                  // Text('CoffeeSelected'),
-                  // Text('SugarCubes'),
-                  // Row(children: [],)
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    children: [
+                      DefaultButtonWidget(
+                        content: 'Add to cart',
+                        onPressed: controller.amountOfCoffee.value > 0 ? () => controller.createItemToCart(
+                          amount: controller.amountOfCoffee.value,
+                          size: controller.selectedCoffeeSizePosition.value,
+                          sugarAmount: controller.selectedSugarQuantity.value,
+                          unityPrice: controller.itemUnityPrice.value,
+                        ) : (){},
+                      ),
+                      const Spacer(),
+                      CircleButtonWidget(
+                        icon: IconsConstants.cartLogoIcon,
+                        color: ColorsTheme.appDefaultPaletColor.shade500,
+                        onPressed: () => controller.goToCartPage(),
+                      ),
+                    ],
+                  )
+                  
                 ],
               ),
             ),
