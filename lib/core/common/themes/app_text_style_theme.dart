@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'colors_theme.dart';
 
 abstract class AppTextStyleTheme {
@@ -47,6 +47,13 @@ abstract class AppTextStyleTheme {
     fontSize: twentySize,
     fontWeight: fontRegular,
     color: ColorsTheme.black,
+  );
+
+  static final TextStyle coffeeDetailsPageItemsWithOpacityTextStyle = TextStyle(
+    fontFamily: fontFamily,
+    fontSize: twentySize,
+    fontWeight: fontRegular,
+    color: ColorsTheme.black.withOpacity(0.2),
   );
 
   static const TextStyle coffeeDetailsPageItemsAmountTextStyle = TextStyle(

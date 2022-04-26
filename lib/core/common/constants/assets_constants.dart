@@ -11,7 +11,7 @@ abstract class AssetsConstants {
   static const String sugarCubeAbled = 'assets/images/sugar_cube_abled.svg';
   static const String sugarCubeDisabled =
       'assets/images/sugar_cube_disabled.svg';
-  static const String sugarCubeTransversal = 'assets/images/sugar_cube_transversal.svg';
+  static const String sugarCubeTransversalCut = 'assets/images/sugar_cube_transversal_cut.svg';
   static const String cupSizeAbled = 'assets/images/cup_size_abled.svg';
   static const String cupSizeDisabled = 'assets/images/cup_size_disabled.svg';
   static const String homeLogo = 'assets/images/home_logo.svg';

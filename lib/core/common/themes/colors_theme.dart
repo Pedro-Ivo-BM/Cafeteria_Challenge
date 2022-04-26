@@ -8,6 +8,7 @@ abstract class ColorsTheme {
   static const Color activeButtonColor = Color(0xFFE86130);
   static const Color white = Color(0xFFFFFFFF);
   static const Color black = Color(0xFF000000);
+  static const Color returtingChevron = Color(0xFF8C746A);
 
   static const MaterialColor appDefaultPaletColor = MaterialColor(
     0xFFCF9775,

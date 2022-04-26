@@ -1,6 +1,5 @@
 import 'package:cafeteria_challenge/core/common/constants/global_constants.dart';
 import 'package:cafeteria_challenge/core/routers/app_routers.dart';
-import 'package:cafeteria_challenge/ui/cart/cart_page.dart';
 import 'package:cafeteria_challenge/ui/home/home_page.dart';
 import 'package:cafeteria_challenge/ui/profile_user/profile_user_page.dart';
 import 'package:flutter/material.dart';
@@ -17,9 +16,14 @@ class RootController extends GetxController {
   set pages(pagesList) => _pages.value = pagesList;
 
   RxBool isScreenTapped = false.obs;
+  RxBool isScreenClosed = false.obs;
+
+  void goToCartPage(){
+    Get.toNamed(AppRoutes.cart);
+  }
 
   Future<void> standByModeCall() async {
-    while (true) {
+    while (!isScreenClosed.value) {
       await Future.delayed(
         const Duration(seconds: GlobalConstants.standByModeTimeInSeconds),
         () async {
@@ -36,13 +40,21 @@ class RootController extends GetxController {
 
   @override
   void onInit() {
+    isScreenClosed.value = false;
     selectedPagePosition = Get.arguments;
     pages.value = <Widget>[
-      HomePage(),
-      CartPage(),
-      ProfileUserPage(),
+      const HomePage(),
+      const SizedBox(),
+      const ProfileUserPage(),
     ];
     super.onInit();
     standByModeCall();
   }
+
+  @override
+  void onClose() {
+    isScreenClosed.value = true;
+  }
+
+
 }

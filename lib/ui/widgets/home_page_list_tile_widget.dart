@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 
 class HomePageListTileWidget extends StatelessWidget {
   final String coffeeName;
-  
   const HomePageListTileWidget({Key? key, required this.coffeeName,  }) : super(key: key);
 
   @override

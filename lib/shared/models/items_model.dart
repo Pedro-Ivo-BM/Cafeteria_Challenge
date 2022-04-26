@@ -8,6 +8,7 @@ class ItemsModel {
   int sugarAmount;
   String id;
   String orderId;
+  double unityPrice;
 
   ItemsModel({
     required this.createdAt,
@@ -17,6 +18,7 @@ class ItemsModel {
     required this.sugarAmount,
     required this.id,
     required this.orderId,
+    required this.unityPrice,
   });
 
   Map<String, dynamic> toMap() {
@@ -28,6 +30,7 @@ class ItemsModel {
       'sugarAmount': sugarAmount,
       'id': id,
       'orderId': orderId,
+      'unityPrice': unityPrice,
     };
   }
 
@@ -40,6 +43,7 @@ class ItemsModel {
       sugarAmount: map['sugarAmount']?.toInt() ?? 0,
       id: map['id'] ?? '',
       orderId: map['orderId'] ?? '',
+      unityPrice: map['unityPrice']?.toDouble() ?? 0.0,
     );
   }
 
