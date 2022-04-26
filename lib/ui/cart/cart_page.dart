@@ -4,6 +4,7 @@ import 'package:cafeteria_challenge/core/common/themes/colors_theme.dart';
 import 'package:cafeteria_challenge/core/common/utils/coffee_image_utils.dart';
 import 'package:cafeteria_challenge/ui/cart/cart_controller.dart';
 import 'package:cafeteria_challenge/ui/widgets/cart_page_list_tile_widget.dart';
+import 'package:cafeteria_challenge/ui/widgets/circle_button_widget.dart';
 import 'package:cafeteria_challenge/ui/widgets/default_button_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -87,87 +88,96 @@ class CartPage extends GetView<CartController> {
                                       controller.itemsList[index].sugarAmount,
                                 ),
                                 const Spacer(),
-                                GestureDetector(
-                                  onTap: () async {
-                                    --controller.itemsList[index].amount;
-                                    if (controller.itemsList[index].amount ==
-                                        0) {
-                                      await controller.deleteItemCart(
-                                          itemId:
-                                              controller.itemsList[index].id);
-                                      controller.itemsList.removeAt(index);
-                                    } else {
-                                      await controller.updateItemCart(
-                                          newAmount: controller
-                                              .itemsList[index].amount,
-                                          itemId:
-                                              controller.itemsList[index].id);
-                                      controller.itemsList[index] =
-                                          controller.itemsList[index];
-                                    }
-                                  },
-                                  child: Container(
-                                    child: const Center(
-                                      child: Icon(Icons.remove,
-                                          color: ColorsTheme.white),
-                                    ),
-                                    height:
-                                        incrementAmoutButtonHeightProportioned,
-                                    width:
-                                        incrementAmoutButtonWidthProportioned,
-                                    decoration: BoxDecoration(
-                                        color: ColorsTheme
-                                            .appDefaultPaletColor.shade400,
-                                        borderRadius: const BorderRadius.only(
-                                          topLeft: Radius.circular(15),
-                                          bottomLeft: Radius.circular(15),
-                                        )),
-                                  ),
-                                ),
-                                Obx(() => SizedBox(
-                                      child: Center(
-                                        child: Text(
-                                          controller.itemsList[index].amount
-                                              .toString(),
-                                          style: AppTextStyleTheme
-                                              .coffeeDetailsPageItemsAmountTextStyle,
+                                Column(
+                                  children: [
+                                    Row(
+                                      children: [
+                                        GestureDetector(
+                                          onTap: () async {
+                                            --controller.itemsList[index].amount;
+                                            if (controller.itemsList[index].amount ==
+                                                0) {
+                                              await controller.deleteItemCart(
+                                                  itemId:
+                                                      controller.itemsList[index].id);
+                                              controller.itemsList.removeAt(index);
+                                            } else {
+                                              await controller.updateItemCart(
+                                                  newAmount: controller
+                                                      .itemsList[index].amount,
+                                                  itemId:
+                                                      controller.itemsList[index].id);
+                                              controller.itemsList[index] =
+                                                  controller.itemsList[index];
+                                            }
+                                          },
+                                          child: Container(
+                                            child: const Center(
+                                              child: Icon(Icons.remove,
+                                                  color: ColorsTheme.white),
+                                            ),
+                                            height:
+                                                incrementAmoutButtonHeightProportioned,
+                                            width:
+                                                incrementAmoutButtonWidthProportioned,
+                                            decoration: BoxDecoration(
+                                                color: ColorsTheme
+                                                    .appDefaultPaletColor.shade400,
+                                                borderRadius: const BorderRadius.only(
+                                                  topLeft: Radius.circular(15),
+                                                  bottomLeft: Radius.circular(15),
+                                                )),
+                                          ),
                                         ),
-                                      ),
-                                      height:
-                                          incrementAmoutButtonHeightProportioned,
-                                      width:
-                                          incrementAmoutButtonWidthProportioned,
-                                    )),
-                                GestureDetector(
-                                  onTap: () async {
-                                    ++controller.itemsList[index].amount;
-                                    await controller.updateItemCart(
-                                        newAmount:
-                                            controller.itemsList[index].amount,
-                                        itemId: controller.itemsList[index].id);
-                                    controller.itemsList[index] =
-                                        controller.itemsList[index];
-                                  },
-                                  child: Container(
-                                    child: const Center(
-                                      child: Icon(
-                                        Icons.add,
-                                        color: ColorsTheme.white,
-                                      ),
+                                        Obx(() => SizedBox(
+                                              child: Center(
+                                                child: Text(
+                                                  controller.itemsList[index].amount
+                                                      .toString(),
+                                                  style: AppTextStyleTheme
+                                                      .coffeeDetailsPageItemsAmountTextStyle,
+                                                ),
+                                              ),
+                                              height:
+                                                  incrementAmoutButtonHeightProportioned,
+                                              width:
+                                                  incrementAmoutButtonWidthProportioned,
+                                            )),
+                                        GestureDetector(
+                                          onTap: () async {
+                                            ++controller.itemsList[index].amount;
+                                            await controller.updateItemCart(
+                                                newAmount:
+                                                    controller.itemsList[index].amount,
+                                                itemId: controller.itemsList[index].id);
+                                            controller.itemsList[index] =
+                                                controller.itemsList[index];
+                                          },
+                                          child: Container(
+                                            child: const Center(
+                                              child: Icon(
+                                                Icons.add,
+                                                color: ColorsTheme.white,
+                                              ),
+                                            ),
+                                            height:
+                                                incrementAmoutButtonHeightProportioned,
+                                            width:
+                                                incrementAmoutButtonWidthProportioned,
+                                            decoration: BoxDecoration(
+                                                color: ColorsTheme
+                                                    .appDefaultPaletColor.shade400,
+                                                borderRadius: const BorderRadius.only(
+                                                  topRight: Radius.circular(15),
+                                                  bottomRight:
+                                                      Radius.circular(15),
+                                                )),
+                                          ),
+                                        ),
+                                      ],
                                     ),
-                                    height:
-                                        incrementAmoutButtonHeightProportioned,
-                                    width:
-                                        incrementAmoutButtonWidthProportioned,
-                                    decoration: BoxDecoration(
-                                        color: ColorsTheme
-                                            .appDefaultPaletColor.shade400,
-                                        borderRadius: const BorderRadius.only(
-                                          topRight: Radius.circular(15),
-                                          bottomRight:
-                                              Radius.circular(15),
-                                        )),
-                                  ),
+                                    Text((controller.itemsList[index].unityPrice*controller.itemsList[index].amount).toStringAsFixed(2), style: AppTextStyleTheme.cartPagePageItemsPriceTextStyle,),
+                                  ],
                                 ),
                               ],
                             ));
@@ -177,12 +187,33 @@ class CartPage extends GetView<CartController> {
                 ),
               ),
             ),
-            bottomSheet: Container(
-              height: 60,
-              child: Row(
-                children: [
-                  //DefaultButtonWidget(onPressed: onPressed, content: content)
-                ],
+            bottomSheet: Padding(
+              padding: const EdgeInsets.all(25),
+              child: Container(
+                color: Colors.transparent,
+                height: 100,
+                child: Column(
+                  children: [
+                    Row(
+                      
+                      children: [
+                      const Text('Total', style: AppTextStyleTheme.cartPagePageTotalPriceTextStyle,),
+                      Padding(
+                        padding: const EdgeInsets.all(6.0),
+                        child: Container(height: 5, width: MediaQuery.of(context).size.width*0.55, color: Colors.grey,),
+                      ),
+                      Text(''),
+                    ],),
+                    const SizedBox(height: 10,),
+                    Row(
+                      children: [
+                        DefaultButtonWidget(onPressed: (){}, content: "Finish"), 
+                        const Spacer(),
+                        CircleButtonWidget(onPressed: (){}, icon: const Icon(Icons.cancel), color: ColorsTheme.activeButtonColor)
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           )

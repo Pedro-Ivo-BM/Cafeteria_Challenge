@@ -155,19 +155,17 @@ class DetailsPage extends GetView<DetailsController> {
                       ),
                     ],
                   ),
-                  ////////////////////////////////////////////// price
                   const SizedBox(
                     height: 4,
                   ),
                   Text(
-                    controller.itemPrice.value.toString(),
+                    controller.itemPrice.value.toStringAsFixed(2),
                     style:
                         AppTextStyleTheme.coffeeDetailsPageItemsPriceTextStyle,
                   ),
                   const SizedBox(
                     height: 10,
                   ),
-//////////////////////////////////////////////////////////// coffe size
                   const Text(
                     'Size',
                     style: AppTextStyleTheme.coffeeDetailsPageItemsTextStyle,
