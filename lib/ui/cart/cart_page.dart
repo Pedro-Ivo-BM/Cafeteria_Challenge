@@ -23,7 +23,7 @@ class CartPage extends GetView<CartController> {
             appBar: PreferredSize(
               preferredSize: Size.fromHeight(appBarHeightProportioned),
               child: AppBar(
-                title: Text(
+                title: const Text(
                   'Cart',
                   style: AppTextStyleTheme.pagesTitleDefaultTextStyle,
                 ),
@@ -67,7 +67,7 @@ class CartPage extends GetView<CartController> {
                 child: Column(
                   children: [
                     ListView.separated(
-                      physics: NeverScrollableScrollPhysics(),
+                      physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       itemCount: controller.itemsList.length,
                       separatorBuilder: (context, index) {
@@ -86,28 +86,25 @@ class CartPage extends GetView<CartController> {
                                   sugarQuantity:
                                       controller.itemsList[index].sugarAmount,
                                 ),
-                                Spacer(),
+                                const Spacer(),
                                 GestureDetector(
-                                  onTap:
-                                      // controller.itemsList[index].amount <= 0
-                                      //     ? () async{
-                                      //         await controller.deleteItemCart(itemId: controller.itemsList[index].id);
-                                      //         controller.itemsList.removeAt(index);
-                                      //       }
-                                      //     :
-                                      () async{
-                                    //--controller.itemListAmount.value;
+                                  onTap: () async {
                                     --controller.itemsList[index].amount;
-                                    if(controller.itemsList[index].amount == 0){
-                                      await controller.deleteItemCart(itemId: controller.itemsList[index].id);
+                                    if (controller.itemsList[index].amount ==
+                                        0) {
+                                      await controller.deleteItemCart(
+                                          itemId:
+                                              controller.itemsList[index].id);
                                       controller.itemsList.removeAt(index);
-                                    }else{
-                                      await controller.updateItemCart(newAmount: controller.itemsList[index].amount, itemId: controller.itemsList[index].id);
-                                     controller.itemsList[index] = controller.itemsList[index];
+                                    } else {
+                                      await controller.updateItemCart(
+                                          newAmount: controller
+                                              .itemsList[index].amount,
+                                          itemId:
+                                              controller.itemsList[index].id);
+                                      controller.itemsList[index] =
+                                          controller.itemsList[index];
                                     }
-                                    //controller.itemListAmount.value = controller.itemsList[index].amount;
-                                    // await controller.updateItemCart(newAmount: controller.itemsList[index].amount, itemId: controller.itemsList[index].id);
-                                    // await controller.onGetItemsList();
                                   },
                                   child: Container(
                                     child: const Center(
@@ -122,18 +119,16 @@ class CartPage extends GetView<CartController> {
                                         color: ColorsTheme
                                             .appDefaultPaletColor.shade400,
                                         borderRadius: const BorderRadius.only(
-                                          topLeft: const Radius.circular(15),
+                                          topLeft: Radius.circular(15),
                                           bottomLeft: Radius.circular(15),
                                         )),
                                   ),
                                 ),
-                                Obx(() => Container(
+                                Obx(() => SizedBox(
                                       child: Center(
                                         child: Text(
-                                        
                                           controller.itemsList[index].amount
                                               .toString(),
-
                                           style: AppTextStyleTheme
                                               .coffeeDetailsPageItemsAmountTextStyle,
                                         ),
@@ -145,17 +140,17 @@ class CartPage extends GetView<CartController> {
                                     )),
                                 GestureDetector(
                                   onTap: () async {
-                                    //++controller.itemListAmount.value;
                                     ++controller.itemsList[index].amount;
-                                     await controller.updateItemCart(newAmount: controller.itemsList[index].amount, itemId: controller.itemsList[index].id);
-                                    controller.itemsList[index] = controller.itemsList[index];
-                                    //controller.itemListAmount.value = controller.itemsList[index].amount;
-                                    //  controller.updateItemCart(newAmount: controller.itemsList[index].amount, itemId: controller.itemsList[index].id);
-                                    //  controller.onGetItemsList();
+                                    await controller.updateItemCart(
+                                        newAmount:
+                                            controller.itemsList[index].amount,
+                                        itemId: controller.itemsList[index].id);
+                                    controller.itemsList[index] =
+                                        controller.itemsList[index];
                                   },
                                   child: Container(
                                     child: const Center(
-                                      child: const Icon(
+                                      child: Icon(
                                         Icons.add,
                                         color: ColorsTheme.white,
                                       ),
@@ -170,7 +165,7 @@ class CartPage extends GetView<CartController> {
                                         borderRadius: const BorderRadius.only(
                                           topRight: Radius.circular(15),
                                           bottomRight:
-                                              const Radius.circular(15),
+                                              Radius.circular(15),
                                         )),
                                   ),
                                 ),
