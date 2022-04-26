@@ -202,7 +202,7 @@ class CartPage extends GetView<CartController> {
                         padding: const EdgeInsets.all(6.0),
                         child: Container(height: 5, width: MediaQuery.of(context).size.width*0.55, color: Colors.grey,),
                       ),
-                      Text(''),
+                      const Text(''),
                     ],),
                     const SizedBox(height: 10,),
                     Row(

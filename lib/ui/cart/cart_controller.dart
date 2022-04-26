@@ -42,4 +42,6 @@ class CartController extends GetxController {
       throw e.message;
     }
   }
+
+  
 }
