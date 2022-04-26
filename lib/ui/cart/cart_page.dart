@@ -82,46 +82,49 @@ class CartPage extends GetView<CartController> {
                               coffeeName:
                                   controller.itemsList[index].coffeeName,
                               coffeeSize: controller.itemsList[index].size,
-                              sugarQuantity: controller.itemsList[index].sugarAmount,
+                              sugarQuantity:
+                                  controller.itemsList[index].sugarAmount,
                             ),
                             Spacer(),
-                            GestureDetector(
-                              onTap: 
-                              controller.itemsList[index].amount <= 0
-                                  ? () { 
-                                         //controller.deleteItemCart(itemId: controller.itemsList[index].id);
-                                         controller.itemsList.remove(index);
-                                  }
-                                  : () { 
-                                        --controller.itemListAmount.value;
-                                         //--controller.itemsList[index].amount;
-                                         //controller.itemListAmount.value = controller.itemsList[index].amount;
+                             GestureDetector(
+                                  onTap: 
+                                  // controller.itemsList[index].amount <= 0
+                                  //     ? () {
+                                  //         //controller.deleteItemCart(itemId: controller.itemsList[index].id);
+                                  //         controller.itemsList.remove(index);
+                                  //       }
+                                  //     : 
+                                      () {
+                                          --controller.itemListAmount.value;
+                                          //--controller.itemsList[index].amount;
+                                          //controller.itemListAmount.value = controller.itemsList[index].amount;
                                           // await controller.updateItemCart(newAmount: controller.itemsList[index].amount, itemId: controller.itemsList[index].id);
                                           // await controller.onGetItemsList();
-                                  },
-                           
-                              child: Container(
-                                child: const Center(
-                                  child: Icon(Icons.remove,
-                                      color: ColorsTheme.white),
+                                        },
+                                  child: Container(
+                                    child: const Center(
+                                      child: Icon(Icons.remove,
+                                          color: ColorsTheme.white),
+                                    ),
+                                    height:
+                                        incrementAmoutButtonHeightProportioned,
+                                    width:
+                                        incrementAmoutButtonWidthProportioned,
+                                    decoration: BoxDecoration(
+                                        color: ColorsTheme
+                                            .appDefaultPaletColor.shade400,
+                                        borderRadius: const BorderRadius.only(
+                                          topLeft: const Radius.circular(15),
+                                          bottomLeft: Radius.circular(15),
+                                        )),
+                                  ),
                                 ),
-                                height: incrementAmoutButtonHeightProportioned,
-                                width: incrementAmoutButtonWidthProportioned,
-                                decoration: BoxDecoration(
-                                    color: ColorsTheme
-                                        .appDefaultPaletColor.shade400,
-                                    borderRadius: const BorderRadius.only(
-                                      topLeft: const Radius.circular(15),
-                                      bottomLeft: Radius.circular(15),
-                                    )),
-                              ),
-                            ),
                             Container(
                               child: Center(
                                 child: Text(
                                   controller.itemListAmount.value.toString(),
                                   //controller.itemsList[index].amount.toString(),
-                                  
+
                                   style: AppTextStyleTheme
                                       .coffeeDetailsPageItemsAmountTextStyle,
                                 ),
@@ -130,33 +133,34 @@ class CartPage extends GetView<CartController> {
                               width: incrementAmoutButtonWidthProportioned,
                             ),
                             GestureDetector(
-                              onTap: () { 
-                                ++controller.itemListAmount.value;
-                                        // ++controller.itemsList[index].amount;
-                                         //controller.itemListAmount.value = controller.itemsList[index].amount;
-                                        //  controller.updateItemCart(newAmount: controller.itemsList[index].amount, itemId: controller.itemsList[index].id);
-                                        //  controller.onGetItemsList();
+                                  onTap: () {
+                                    ++controller.itemListAmount.value;
+                                    // ++controller.itemsList[index].amount;
+                                    //controller.itemListAmount.value = controller.itemsList[index].amount;
+                                    //  controller.updateItemCart(newAmount: controller.itemsList[index].amount, itemId: controller.itemsList[index].id);
+                                    //  controller.onGetItemsList();
                                   },
-                             
-                              
-                              child: Container(
-                                child: const Center(
-                                  child: const Icon(
-                                    Icons.add,
-                                    color: ColorsTheme.white,
+                                  child: Container(
+                                    child: const Center(
+                                      child: const Icon(
+                                        Icons.add,
+                                        color: ColorsTheme.white,
+                                      ),
+                                    ),
+                                    height:
+                                        incrementAmoutButtonHeightProportioned,
+                                    width:
+                                        incrementAmoutButtonWidthProportioned,
+                                    decoration: BoxDecoration(
+                                        color: ColorsTheme
+                                            .appDefaultPaletColor.shade400,
+                                        borderRadius: const BorderRadius.only(
+                                          topRight: Radius.circular(15),
+                                          bottomRight:
+                                              const Radius.circular(15),
+                                        )),
                                   ),
                                 ),
-                                height: incrementAmoutButtonHeightProportioned,
-                                width: incrementAmoutButtonWidthProportioned,
-                                decoration: BoxDecoration(
-                                    color: ColorsTheme
-                                        .appDefaultPaletColor.shade400,
-                                    borderRadius: const BorderRadius.only(
-                                      topRight: Radius.circular(15),
-                                      bottomRight: const Radius.circular(15),
-                                    )),
-                              ),
-                            ),
                           ],
                         );
                       },
