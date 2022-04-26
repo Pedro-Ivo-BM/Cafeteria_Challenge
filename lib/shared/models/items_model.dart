@@ -3,12 +3,13 @@ import 'dart:convert';
 class ItemsModel {
   DateTime createdAt;
   String coffeeId;
-  int size;
+  String size;
   int amount;
   int sugarAmount;
   String id;
   String orderId;
   double unityPrice;
+  String coffeeName;
 
   ItemsModel({
     required this.createdAt,
@@ -19,6 +20,7 @@ class ItemsModel {
     required this.id,
     required this.orderId,
     required this.unityPrice,
+    required this.coffeeName,
   });
 
   Map<String, dynamic> toMap() {
@@ -31,6 +33,7 @@ class ItemsModel {
       'id': id,
       'orderId': orderId,
       'unityPrice': unityPrice,
+      'coffeeName': coffeeName,
     };
   }
 
@@ -38,12 +41,13 @@ class ItemsModel {
     return ItemsModel(
       createdAt: DateTime.fromMillisecondsSinceEpoch(map['createdAt']),
       coffeeId: map['coffeeId'] ?? '',
-      size: map['size']?.toInt() ?? 0,
+      size: map['size'] ?? '',
       amount: map['amount']?.toInt() ?? 0,
       sugarAmount: map['sugarAmount']?.toInt() ?? 0,
       id: map['id'] ?? '',
       orderId: map['orderId'] ?? '',
       unityPrice: map['unityPrice']?.toDouble() ?? 0.0,
+      coffeeName: map['coffeeName'] ?? '',
     );
   }
 

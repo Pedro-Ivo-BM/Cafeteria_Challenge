@@ -396,9 +396,10 @@ class DetailsPage extends GetView<DetailsController> {
                         content: 'Add to cart',
                         onPressed: controller.amountOfCoffee.value > 0 ? () => controller.createItemToCart(
                           amount: controller.amountOfCoffee.value,
-                          size: controller.selectedCoffeeSizePosition.value,
+                          size: controller.selectedCoffee.sizes[controller.selectedCoffeeSizePosition.value].size,
                           sugarAmount: controller.selectedSugarQuantity.value,
                           unityPrice: controller.itemUnityPrice.value,
+                          coffeeName: controller.selectedCoffee.name
                         ) : (){},
                       ),
                       const Spacer(),
